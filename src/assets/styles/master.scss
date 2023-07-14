@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'temp';
+@import 'calendar';
+
+/* Third party styles */
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+@import '~@fullcalendar/list/main.css';
+
+@import 'font-awesome/css/font-awesome.css';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'react-dates/lib/css/_datepicker.css';

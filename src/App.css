@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Sans;
+  width: 100%;
+  height: 100vh;
+}
+
+#root {
+  height: inherit;
+}
+
+.app-container {
+  padding: 0 2em;
+}
+
+/* Header */
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  background-color: white;
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.header-title-container h1 {
+  margin: 0;
+}
+
+header h1 {
+  color: #0060ae;
+  font-size: 1.25rem;
+}
+
+header a {
+  color: white;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+header .buttons {
+  margin-left: auto;
+}
+
+.header-logo {
+  width: 12em;
+  margin-right: 3em;
+}
+
+.dropdown-item {
+  color: rgb(54, 55, 56);
+  line-height: 1.42857143;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(54, 55, 56);
+  color: white;
+}
+
+/* Main */
+main {
+  padding: 1rem;
+}
+main a {
+  color: steelblue;
+}
+main h1 {
+  margin-top: 0;
+}
+
+.login__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  height: inherit;
+}
+
+/* Fields */
+input[type='text'],
+input[type='password'],
+select {
+  width: 15rem;
+  padding: 1rem 1.25rem;
+  margin: 0.5rem;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  min-width: 5rem;
+  padding: 1rem 1.25rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(54, 55, 56);
+  color: white;
+}
+
+/* FormList */
+.list-item--form span {
+  display: flex;
+  align-items: center;
+}
+
+.list-item--form span a,
+.list-item--form span p {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+/* Table */
+
+.table-container {
+  width: 100%;
+}
+
+.table-filter {
+  background-color: lightgray;
+  margin-bottom: 2em;
+  border: 1px solid rgb(54, 55, 56);
+  border-radius: 0.25em;
+  padding: 0 1em;
+}
+
+.table-error-message {
+  font-style: italic;
+}
+
+.table {
+  width: 100%;
+}
+
+th {
+  background-color: white;
+  text-align: left;
+  border-bottom: 1px solid rgb(54, 55, 56);
+  min-height: 30px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+td {
+  padding: 0.25rem 0.5rem;
+}
+
+.actions-cell {
+  text-align: right;
+}
+
+/* Navigation */
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.breadcrumb-item {
+  color: black;
+  text-decoration: none;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs > li > a {
+  margin: 0.5rem;
+}
+
+/* Profile */
+.profile-form {
+  width: 100%;
+}
+
+.profile-menu-button {
+  font-weight: 600;
+}
+
+.profile-menu-closed {
+  display: none;
+}
+
+.profile-menu {
+  width: 12em;
+  padding: 1em;
+  background-color: white;
+  border: 1px solid rgb(54, 55, 56);
+  border-radius: 0.25em;
+}
+
+.profile-menu-header {
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+
+.profile-menu-header h5 {
+  color: rgb(9, 84, 130);
+  margin: 0;
+  font-weight: 600;
+}
+.profile-menu-header small {
+  color: rgb(54, 55, 56);
+  font-weight: 300;
+}
+
+.profile-menu-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-menu-link {
+  color: rgb(54, 55, 56);
+  text-decoration: none;
+  margin-bottom: 0.5em;
+}
+
+.profile-menu-link:hover {
+  text-decoration: underline;
+}
+
+/* Pagination */
+.pagination-buttons {
+  padding: 0;
+}
+
+.pagination-button {
+  padding: 0.5em;
+  margin: 0;
+}
+
+.pagination-button:nth-child(2) {
+  margin-left: 1em;
+}
