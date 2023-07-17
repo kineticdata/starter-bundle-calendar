@@ -1,6 +1,6 @@
 import React from 'react';
 // import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { WallySpinner } from './components/Loading';
 import { Login } from './components/Login';
 import { Header } from './components/Header';
@@ -53,6 +53,12 @@ export const App = ({ initialized, loggedIn, loginProps, timedOut }) => {
               path={['/calendar/:formSlug/settings']}
               render={() => <CalendarSettings />}
               exact
+            />
+            {/* Adding canonical route for when a builder hits the preview button from a form */}
+            <Redirect
+              from="/kapps/:kappSlug/forms/:formSlug"
+              to="/calendar/:formSlug"
+              noThrow
             />
             <Route component={NotFound} />
           </Switch>
