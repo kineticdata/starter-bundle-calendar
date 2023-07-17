@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CoreForm } from '@kineticdata/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import { CALENDAR_KAPP_SLUG } from '../constants';
 import querystring from 'query-string';
@@ -63,7 +61,7 @@ export const Form = ({ edit, profile }) => {
         <span className="pull-right">
           {profile && profile.spaceAdmin && (
             <Link to={`/calendar/${formSlug}/settings`}>
-              <FontAwesomeIcon icon={faGear} />
+              <i className="fa fa-gear"/>
             </Link>
           )}
         </span>
