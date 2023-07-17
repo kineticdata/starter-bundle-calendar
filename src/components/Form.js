@@ -58,7 +58,7 @@ export const Form = ({ edit, profile }) => {
     <div>
       <h1 className="p-4">
         {formName}
-        <span className="pull-right">
+        <span className="float-right">
           {profile && profile.spaceAdmin && (
             <Link to={`/calendar/${formSlug}/settings`}>
               <i className="fa fa-gear"/>

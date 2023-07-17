@@ -1,0 +1,231 @@
+/**
+ * Modals - Common
+ ******************************************************************************/
+
+ @media (max-width: 767px) {
+    .modal-dialog {
+      height: 100%;
+      margin: 0;
+      max-width: none;
+      .modal-content {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .modal-body {
+          // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+          flex: 1 0 0%;
+          flex-grow: 1;
+          flex-shrink: 0;
+          flex-basis: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .modal-dialog {
+      .modal-content {
+        border: none;
+        box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  
+  .modal-dialog {
+    .modal-content {
+      border-radius: 0;
+      .modal-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        .modal-title {
+          display: flex;
+          justify-content: center;
+          position: relative;
+          min-height: 3rem;
+          font-size: 1rem;
+          font-weight: bold;
+          span {
+            padding: 0.75rem 6rem;
+            text-align: center;
+          }
+          a,
+          button {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            padding: 0 1rem;
+            &:first-child {
+              left: 0;
+            }
+            &:last-child {
+              right: 0;
+            }
+          }
+          a {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .btn.btn-back {
+          border-top: 1px solid $border-color;
+          border-bottom: 0;
+          padding: 0.8125rem 1rem;
+          text-align: left;
+          .fa {
+            margin-right: 0.25rem;
+          }
+        }
+      }
+      .modal-body {
+        &--padding,
+        &.form {
+          padding: 1rem;
+        }
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        > .embedded-core-form,
+        > .modal-form,
+        > .modal-confirmation {
+          padding: 1rem;
+        }
+        > .modal-confirmation {
+          p {
+            margin: 0;
+          }
+        }
+        .embedded-core-form .container,
+        form {
+          padding: 0;
+          overflow: visible;
+        }
+        .list-group.button-list {
+          .list-group-item {
+            border-bottom: 1px solid $border-color;
+            padding: 0;
+            .btn.btn-link {
+              font-size: 0.875rem;
+              padding: 0.875rem 1rem;
+              flex-grow: 1;
+              display: flex;
+              .button-title {
+                font-weight: 600;
+                margin-right: auto;
+              }
+            }
+          }
+        }
+        .button-list .btn-link {
+          .validation-error {
+            max-width: 200px;
+            text-align: right;
+            white-space: normal;
+          }
+        }
+        .save-filter {
+          display: flex;
+          flex-direction: column;
+          margin: 1rem;
+          label {
+            color: $primary;
+            font-size: 0.75rem;
+            line-height: 1.5rem;
+          }
+          input {
+            min-height: 1.5rem;
+            border: 1px solid $gray-700;
+            border-radius: $border-radius-xl;
+            background-color: $white;
+            padding: 0.5em;
+            color: $gray-900;
+            font-size: 0.75rem;
+            line-height: 1.5rem;
+          }
+          .btn {
+            margin: 1rem 0;
+            + .btn {
+              margin-top: 0;
+            }
+          }
+        }
+        &.filter-section {
+          padding-bottom: 3rem;
+          h5 {
+            font-weight: 600;
+            color: $primary;
+            font-size: 1rem;
+            padding: 1rem;
+            margin: 0;
+            ~ h5 {
+              margin-top: 1rem;
+            }
+          }
+          label {
+            border-bottom: 1px solid rgba(244, 246, 249, 1);
+            color: $primary;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+            padding: 1rem;
+            + small {
+              padding: 1rem;
+              border-bottom: 1px solid rgba(244, 246, 249, 1);
+            }
+          }
+          input[type='checkbox'],
+          input[type='radio'] {
+            margin-right: 0.75rem;
+          }
+          select,
+          input[type='text'] {
+            margin: 0 1rem 1rem;
+            width: calc(100% - 2rem);
+          }
+          .date-range-date {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(244, 246, 249, 1);
+            label {
+              border-bottom: none;
+              padding: 0;
+              width: 10rem;
+            }
+          }
+        }
+        &--import-export {
+          h2 {
+            font-size: 1.125rem;
+            margin: 1rem 0 0;
+          }
+          h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0;
+          }
+          h4 {
+            font-size: 0.875rem;
+            margin: 0.25rem 0 1rem;
+          }
+        }
+      }
+      .modal-footer {
+        &:not(.modal-footer--padding) {
+          padding: 0;
+  
+          .btn {
+            flex-grow: 1;
+            border-radius: 0;
+            padding: 1rem;
+            margin: 0;
+          }
+        }
+      }
+  
+      > form {
+        padding: 0;
+      }
+    }
+  }
