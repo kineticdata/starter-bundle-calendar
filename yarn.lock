@@ -2768,6 +2768,11 @@ acorn@^8.2.4, acorn@^8.4.1, acorn@^8.7.1, acorn@^8.8.2, acorn@^8.9.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.10.0.tgz#8be5b3907a67221a81ab23c7889c4c5526b62ec5"
   integrity sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==
 
+add-charset-webpack-plugin@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/add-charset-webpack-plugin/-/add-charset-webpack-plugin-1.0.6.tgz#30ac3082f497ee12a4b00bfbfbb8bea955513098"
+  integrity sha512-3FFuoaXit6iMQu6Tz/1+mIS1cAFa8rvWRH6NeW2TWkaCG7+5Py+6G0lx+IPk1qeRJ58I0hoTkj0EENKkrqh4EQ==
+
 add@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
