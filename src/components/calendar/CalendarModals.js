@@ -79,53 +79,8 @@ export const DateModal = props => {
       : moment(dateInfo.date)
           .tz(timezone)
           .toISOString();
-
-  return (
-    <Modal isOpen={dateModalOpen} toggle={toggle} size="lg">
-      <div className="modal-header">
-        <h4 className="modal-title">
-          <button type="button" className="btn btn-link" onClick={toggle}>
-            <I18n>Cancel</I18n>
-          </button>
-          <span>
-            <I18n>Create Event</I18n>
-          </span>
-        </h4>
-      </div>
-      <ModalBody>
-        <div className="p-4">
-          {BodyRender ? (
-            <BodyRender />
-          ) : (
-            <EventCoreForm
-              newDateForm={newDateForm}
-              calendarKey={calendarKey}
-              normalizedDateTime={normalizedDateTime}
-              toggle={toggle}
-            />
-          )}
-        </div>
-      </ModalBody>
-    </Modal>
-  );
-};
-
-const getSubmissionId = (event, eventForm) => {
-  try {
-    return getDetail(event, eventForm.idKey);
-  } catch (e) {
-    console.error('error getting submission key');
-  }
-};
-
-const EventCoreFormComponent = ({
-  submissionId,
-  handleUpdated,
-  eventReviewMode,
-  newDateForm,
-  normalizedDateTime,
-}) => {
-  // Add start date/time to values if exist
+  const kappSlug = newDateForm && newDateForm.kappSlug;
+  const formSlug = newDateForm && newDateForm.formSlug;
   const fieldMapping = newDateForm && newDateForm.fieldMapping;
   const values = {
     ...(fieldMapping &&
@@ -146,6 +101,45 @@ const EventCoreFormComponent = ({
       }),
   };
 
+  return (
+    <Modal isOpen={dateModalOpen} toggle={toggle} size="lg">
+      <div className="modal-header">
+        <h4 className="modal-title">
+          <button type="button" className="btn btn-link" onClick={toggle}>
+            <I18n>Cancel</I18n>
+          </button>
+          <span>
+            <I18n>Create Event</I18n>
+          </span>
+        </h4>
+      </div>
+      <ModalBody>
+        <div className="p-4">
+          {BodyRender ? (
+            <BodyRender />
+          ) : (
+            <EventCoreForm
+              values={values}
+              kappSlug={kappSlug}
+              formSlug={formSlug}
+              calendarKey={calendarKey}
+              toggle={toggle}
+            />
+          )}
+        </div>
+      </ModalBody>
+    </Modal>
+  );
+};
+
+const EventCoreFormComponent = ({
+  submissionId,
+  handleUpdated,
+  eventReviewMode,
+  kappSlug,
+  formSlug,
+  values,
+}) => {
   return submissionId ? (
     <CoreForm
       submission={submissionId}
@@ -157,8 +151,8 @@ const EventCoreFormComponent = ({
     />
   ) : (
     <CoreForm
-      kapp={newDateForm.kappSlug ? newDateForm.kappSlug : 'datastore'}
-      form={newDateForm.formSlug}
+      kapp={kappSlug}
+      form={formSlug}
       values={values}
       created={handleUpdated}
       components={{
@@ -228,7 +222,24 @@ export const EventModal = props => {
     calendarKey,
   } = props;
   const BodyRender = components && components.BodyRender;
-  const submissionId = eventForm && getSubmissionId(event, eventForm);
+
+  // Parse Event Form
+  const hasEventForm = eventForm && Object.keys(eventForm).length > 0;
+  const kappSlug = hasEventForm && eventForm.kappSlug;
+  const formSlug = hasEventForm && eventForm.formSlug;
+  const submissionId =
+    hasEventForm && getDetail(event, eventForm.submissionIdKey, undefined);
+
+  // Build up values to set on the form from calendar data field mapping
+  let values = {};
+  hasEventForm &&
+    eventForm.fieldMapping &&
+    Object.entries(eventForm.fieldMapping).forEach(([k, v]) => {
+      const value = getDetail(event, v);
+      if (value) {
+        values[k] = value;
+      }
+    });
   const [eventReviewMode, setEventReviewMode] = useState(true);
 
   return (
@@ -283,12 +294,15 @@ export const EventModal = props => {
       <ModalBody>
         {BodyRender ? (
           <BodyRender />
-        ) : submissionId ? (
+        ) : hasEventForm ? (
           <EventCoreForm
             eventReviewMode={eventReviewMode}
+            kappSlug={kappSlug}
+            formSlug={formSlug}
             submissionId={submissionId}
             calendarKey={calendarKey}
             toggle={toggle}
+            values={values}
           />
         ) : details ? (
           details(renderEventDetail)

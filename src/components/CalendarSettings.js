@@ -5,7 +5,7 @@ import { CodeBlock } from 'react-code-blocks';
 import { useForm, updateConfig } from '../hooks';
 import { useParams, Link } from 'react-router-dom';
 import { CALENDAR_KAPP_SLUG } from '../constants';
-import { EventTypesText, NewDateForm } from './calendar/HelpText';
+import { EventTypesText, NewDateForm, EventForm } from './calendar/HelpText';
 
 export const CalendarSettings = () => {
   const kappSlug = CALENDAR_KAPP_SLUG;
@@ -74,12 +74,7 @@ export const CalendarSettings = () => {
             <b>eventForm:</b> (Optional) defines a submission to be rendered
             when an event in the main calendar is selected.{' '}
             <i>A submission id is required.</i>
-            <code>
-              <CodeBlock
-                text={`"eventForm": {\n   "idKey": "Id"\n}`}
-                language="json"
-              />
-            </code>
+            <EventForm/>
           </li>
           <li>
             <b>newDateForm:</b> (Optional) defines a form to be rendered when an

@@ -61,3 +61,24 @@ export const NewDateForm = () => {
     </code>
   );
 };
+
+export const EventForm = () => {
+    const text = `
+    "eventForm": {
+        "submissionIdKey": "Id",  // If present, we load coreForm with an ID
+        "kappSlug": "calendar",   // Only necessary if no submissionIdKey provided
+        "fromSlug": "new-change", // Only necessary if no submissionIdKey provided
+        "fieldMapping": {	      // Only necessary if no submissionIdKey provided
+          "Form Field 1 Name": "Detail Mapping 1 Id", 
+          "Change ID": "Change_Id"
+        },
+      }`;
+    return (
+      <code>
+        <CodeBlock text={text} language="json" />
+      </code>
+    );
+  };
+
+
+

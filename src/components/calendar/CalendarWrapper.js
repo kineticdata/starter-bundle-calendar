@@ -95,8 +95,7 @@ export const CalendarWrapper = props => {
             eventModalOpen={props.eventModalOpen}
             eventForm={
               props.calendarConfig &&
-              props.calendarConfig.eventForm &&
-              Object.keys(props.calendarConfig.eventForm).length > 0
+              props.calendarConfig.eventForm
             }
             calendarKey={props.calendarKey}
             details={renderEventDetail => {
