@@ -16,7 +16,6 @@ import { connect } from 'react-redux';
 export { refetchCalendarEvents };
 
 export const handleMainDateSelect = props => args => {
-  console.log(args);
   let modalOpen;
   if (args == null) {
     modalOpen = false;

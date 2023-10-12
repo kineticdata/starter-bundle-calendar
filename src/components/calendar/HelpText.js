@@ -50,7 +50,7 @@ export const NewDateForm = () => {
   const text = `
 "newDateForm": {
     "kappSlug": "calendar",
-    "fromSlug": "new-change",
+    "formSlug": "new-change",
     "fieldMapping": {
         "startDateTime": "Start Date Time"
     }

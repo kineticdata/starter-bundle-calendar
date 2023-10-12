@@ -180,7 +180,7 @@ export function* fetchCalendarConfigSaga({ payload }) {
   const { form, error } = yield call(fetchForm, {
     kappSlug,
     formSlug,
-    include: 'details',
+    include: 'details,attributesMap',
   });
 
   if (error) {
@@ -188,7 +188,8 @@ export function* fetchCalendarConfigSaga({ payload }) {
   } else {
     if (form) {
       // Parse configuration
-      const config = parseJson(form.description, true);
+      // Calendar Config is a single attribute so we can use the intial index
+      const config = parseJson(form.attributesMap['Calendar Config'][0], true);
       let { eventTypes, ...calendarConfig } = config;
       eventTypes =
       eventTypes &&
@@ -287,8 +288,17 @@ export function* fetchCalendarEventsSaga({ payload }) {
   // Each request responses has a unique key.
   const response = yield all({ ...resources });
 
+    // Separate successful from errors responses.
+    const responseErrors = Map(response).filter(resource => !!resource.error).toJS();
+    const responseSuccess = Map(response).filter(resource => !resource.error).toJS();
+  
+    if (responseErrors.size > 0) {
+      // May want to update the error handling as preferred
+      console.log(`There were ${responseErrors.size} events with errors that we are unable to display.`)
+    }
+
   // Combine all events from each source and reformat to the needs of the calendar.
-  let events = Object.keys(response ? response : {}).reduce((acc, key) => {
+  let events = Object.keys(responseSuccess ? responseSuccess : {}).reduce((acc, key) => {
     const coreMapping = payload.sources
       .get(key)
       .get('coreMapping')
@@ -299,7 +309,7 @@ export function* fetchCalendarEventsSaga({ payload }) {
       payload.sources.get(key).get('detailMapping'),
     );
 
-    let localEvents = response[key].records.map(event => {
+    let localEvents = response[key].records && response[key].records.map(event => {
       const details = detailMapping.map(detail => {
         let value;
         if (typeof detail === 'object') {

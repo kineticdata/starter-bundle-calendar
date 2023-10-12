@@ -13,7 +13,7 @@ export const useForm = (kappSlug, formSlug) => {
 
   useEffect(() => {
     const fetchFormRequest = async () => {
-      const response = await fetchForm({ kappSlug, formSlug, include: 'details' });
+      const response = await fetchForm({ kappSlug, formSlug, include: 'details,attributesMap' });
       setForm(response.form);
     };
 
@@ -23,15 +23,13 @@ export const useForm = (kappSlug, formSlug) => {
   return form;
 };
 
-export const updateConfig = async (kappSlug, formSlug, description) => {
+export const updateConfig = async (kappSlug, formSlug, calendarConfig) => {
 
   const response = await formUpdate ({
     kappSlug: kappSlug,
     formSlug: formSlug,
-    form: { "description": description },
+    form: { attributesMap: { 'Calendar Config': [calendarConfig] } },
   });
-
-  console.log('RESP', response)
 }
 
 export const useKapp = kappSlug => {
