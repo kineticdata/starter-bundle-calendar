@@ -63,7 +63,7 @@ export class MainCalendar extends Component {
       timezone: this.props.timezone,
     });
   };
-
+  
   componentDidUpdate(prevProps) {
     if (!this.props.selectedDate.isSame(prevProps.selectedDate)) {
       this.calendarRef.current
@@ -83,8 +83,8 @@ export class MainCalendar extends Component {
         agenda: 'listWeek',
       };
       this.calendarRef.current
-        .getApi()
-        .changeView(viewObject[this.props.mainCalendarView]);
+      .getApi()
+      .changeView(viewObject[this.props.mainCalendarView]);
     }
   }
 
@@ -97,6 +97,9 @@ export class MainCalendar extends Component {
         contentHeight={'auto'}
         eventLimit={this.props.maxEventLimit ? this.props.maxEventLimit : 3}
         defaultView="dayGridMonth"
+        // rerenderDelay will delay 1 sec in order for all rerenders of the calendar to finish
+        // this is used because of styling changes between rerenders and should be removed if those are fixed
+        rerenderDelay={1000}
         plugins={[
           dayGridPlugin,
           timeGridPlugin,

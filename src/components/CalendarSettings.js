@@ -21,14 +21,15 @@ export const CalendarSettings = () => {
   // useEffect will set code equal to the form when it loads or changes
   useEffect(() => {
     if (form) {
-      setConfigJSON(JSON.stringify(JSON.parse(form.description), null, 2));
-      setOrigConfigJSON(JSON.stringify(JSON.parse(form.description), null, 2));
+      // Calendar Config is a single attribute so we can use the intial index
+      setConfigJSON(JSON.stringify(JSON.parse(form.attributesMap['Calendar Config'][0]), null, 2));
+      setOrigConfigJSON(JSON.stringify(JSON.parse(form.attributesMap['Calendar Config'][0]), null, 2));
     }
   }, [form]);
 
   const onSave = () => {
-    const description = JSON.stringify(JSON.parse(configJSON));
-    updateConfig(kappSlug, formSlug, description);
+    const calendarConfig = JSON.stringify(JSON.parse(configJSON));
+    updateConfig(kappSlug, formSlug, calendarConfig);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CoreForm } from '@kineticdata/react';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
@@ -25,9 +25,11 @@ export const Form = ({ edit, profile }) => {
   const [formName, setFormName] = useState([]);
 
   // Set the Form Name when the form loads
-  const handleLoaded = form => {
-    setFormName(form.name());
-  };
+  const handleLoaded = useCallback(
+    ( form ) => 
+      setFormName(form.name()),
+    [],
+  );
 
   const handleCreated = useCallback(
     ({ submission }) => {

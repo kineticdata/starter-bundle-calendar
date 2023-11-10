@@ -10,6 +10,7 @@ import { CalendarSettings } from './components/CalendarSettings';
 import { Profile } from './components/Profile';
 import { useProfile, useSpace } from './hooks';
 import './assets/styles/master.scss';
+import './assets/styles/react_dates_overrides.scss'
 
 // use Wally for empty app
 export const EmptyBodyRow = () => <WallySpinner />;
