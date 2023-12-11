@@ -27,6 +27,7 @@ export const SourceList = props => {
     <div className="calendar--filter">
       {props.filterActions.size > 0 &&
         props.filterActions
+          .sortBy(filter => filter.get('name'))
           .map((source, sourceId) => (
             <div key={sourceId}>
               <div className="checkbox__filter">
