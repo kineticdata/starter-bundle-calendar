@@ -295,18 +295,22 @@ const getMonthRange = date => {
   return dates;
 };
 
-export const getStartDate = (fieldObj, date) => {
+export const getStartDate = (fieldObj, date, calendarView) => {
+  // TODO: defaultView will have to be updated when adding the feature of changing the default view
+  const defaultView = calendarView ? calendarView : 'month';
   return {
     [getPropertyName(fieldObj)]: moment(date)
-      .startOf('month')
+      .startOf(defaultView)
       .format(fieldObj.get('format')),
   };
 };
 
-export const getEndDate = (fieldObj, date) => {
+export const getEndDate = (fieldObj, date, calendarView) => {
+  // TODO: defaultView will have to be updated when adding the feature of changing the default view
+  const defaultView = calendarView ? calendarView : 'month';
   return {
     [getPropertyName(fieldObj)]: moment(date)
-      .endOf('month')
+      .endOf(defaultView)
       .format(fieldObj.get('format')),
   };
 };
