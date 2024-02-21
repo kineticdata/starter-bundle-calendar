@@ -42,9 +42,9 @@ export const getResources = (acc, mapping, key, date, calendarView) => {
         case 'Date Range':
           return { ...getDateRange(fieldObj, date, calendarView), ...acc };
         case 'Start Date':
-          return { ...getStartDate(fieldObj, date), ...acc };
+          return { ...getStartDate(fieldObj, date, calendarView), ...acc };
         case 'End Date':
-          return { ...getEndDate(fieldObj, date), ...acc };
+          return { ...getEndDate(fieldObj, date, calendarView), ...acc };
         default:
           return acc;
       }
@@ -283,6 +283,8 @@ export function* fetchCalendarEventsSaga({ payload }) {
       payload.calendarView,
     );
   }, {});
+
+  console.log('OPE', payload, resources)
 
   // Make Bridge calls. The response is a JS Object of requested responses.
   // Each request responses has a unique key.
