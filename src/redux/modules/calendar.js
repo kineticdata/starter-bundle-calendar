@@ -90,6 +90,7 @@ export const reducer = (state, { type, payload }) => {
         .setIn([payload.key, 'sources'], payload.sources)
         .setIn([payload.key, 'calendarConfig'], payload.calendarConfig)
         .setIn([payload.key, 'relatedDataMapping'], payload.relatedData)
+        .setIn([payload.key, 'mainCalendarView'], payload.calendarConfig.defaultView && payload.calendarConfig.defaultView.toLowerCase())
         .setIn([payload.key, 'updatedConfigKey'], Date.now());
     case types.SET_CALENDAR_DATE_SELECT:
       return state

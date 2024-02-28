@@ -284,8 +284,6 @@ export function* fetchCalendarEventsSaga({ payload }) {
     );
   }, {});
 
-  console.log('OPE', payload, resources)
-
   // Make Bridge calls. The response is a JS Object of requested responses.
   // Each request responses has a unique key.
   const response = yield all({ ...resources });
