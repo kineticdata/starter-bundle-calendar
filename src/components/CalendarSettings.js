@@ -69,7 +69,7 @@ export const CalendarSettings = () => {
         <h2>Calendar Configuration Properties</h2>
         <ul>
           <li>
-            <b>name:</b> The display name for the calendar
+            <b>defaultView:</b> The default view of the calendar ("month", "week", "day" )
           </li>
           <li>
             <b>eventForm:</b> (Optional) defines a submission to be rendered
