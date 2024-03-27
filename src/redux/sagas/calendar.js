@@ -359,7 +359,8 @@ export function* fetchCalendarEventsSaga({ payload }) {
         event = convertRecurring(event, coreMapping);
       }
 
-      if (event.start.getDate() !== event.end.getDate()) {
+      // Any event that does not have a preset allDay value and is longer than 24 hrs sets allDay: true
+      if (!event.allDay && ((event.end.getTime() - event.start.getTime()) / 1000 / 60) >= 1440) {
         event.allDay = true;
       }
 
