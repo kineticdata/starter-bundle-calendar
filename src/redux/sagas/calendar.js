@@ -359,6 +359,10 @@ export function* fetchCalendarEventsSaga({ payload }) {
         event = convertRecurring(event, coreMapping);
       }
 
+      if (event.start.getDate() !== event.end.getDate()) {
+        event.allDay = true;
+      }
+
       return event;
     });
 
