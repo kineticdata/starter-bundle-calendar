@@ -27,6 +27,19 @@ window.$ = jquery;
 window.jQuery = jquery;
 window.moment = moment;
 
+require('datatables.net');
+require('datatables.net-responsive');
+require('datatables.net-dt/css/jquery.dataTables.css');
+require('datatables.net-responsive-bs/css/responsive.bootstrap.css');
+require('datatables.net-dt');
+require('datatables.net-buttons-dt');
+require('datatables.net-buttons/js/buttons.colVis.js');
+require('datatables.net-buttons/js/buttons.html5.js');
+require('datatables.net-buttons/js/buttons.print.js');
+
+require('./lib/kd-dataviewer/kd-dataviewer');
+require('./lib/helpers');
+
 /**
  * Kinetic form customizations
  ******************************************************************************/
