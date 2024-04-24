@@ -262,34 +262,7 @@ export const EventModal = props => {
             </button>
           )}
         </h4>
-        {additionalHeadElements ? (
-          additionalHeadElements()
-        ) : (
-          <div className="p-3">
-            <div>
-              <span>
-                <Moment
-                  timestamp={
-                    timezone === false
-                      ? moment(event.start)
-                      : moment(event.start).tz(timezone)
-                  }
-                  format={'LLL'}
-                />{' '}
-                -{' '}
-                <Moment
-                  timestamp={
-                    timezone === false
-                      ? moment(event.end)
-                      : moment(event.end).tz(timezone)
-                  }
-                  format={'LLL'}
-                />
-              </span>
-            </div>
-            <div>{event.type}</div>
-          </div>
-        )}
+        {additionalHeadElements && additionalHeadElements()}
       </div>
       <ModalBody>
         {BodyRender ? (
