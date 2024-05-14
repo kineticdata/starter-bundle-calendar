@@ -307,7 +307,12 @@ export const getStartDate = (fieldObj, date, calendarView) => {
 
 export const getEndDate = (fieldObj, date, calendarView) => {
   // TODO: defaultView will have to be updated when adding the feature of changing the default view
-  const defaultView = calendarView ? calendarView : 'month';
+  let defaultView = calendarView ? calendarView : 'month';
+  // Currently list view is limited to a week timeframe, if that's ever expanded this
+  // will need to be updated to parse the type of list view being used.
+  if (defaultView === 'agenda') {
+    defaultView = 'week'
+  }
   return {
     [getPropertyName(fieldObj)]: moment(date)
       .endOf(defaultView)
